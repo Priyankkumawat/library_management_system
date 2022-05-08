@@ -1,0 +1,45 @@
+{% extends 'stud/base.html' %}
+{% block title %}Issue{% endblock  %}
+{% block css %}
+    .mb-3{
+        width:25rem;
+    }
+
+    .mb-3 input{
+        border:2px solid black;
+        border-radius:2rem;
+    }
+    .mb-3 input{
+        background-color: #E6E8E8;
+    }
+    .mb-3 input :hover{
+        background-color: #EDF0F0;
+    }
+{% endblock  %}
+
+{% block body %}
+{% load static %}
+<div class="container my-5 px-5">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name_stud" class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Enter your name please" id="name_stud">
+        </div>
+        <div class="mb-3">
+            <label for="enroll" class="form-label">Enrollment number</label>
+            <input type="text" name="enrol" class="form-control" placeholder="Enter your Enrollment please" id="enroll">
+        </div>
+        <div class="mb-3">
+            <label for="moblie" class="form-label">Mobile number</label>
+            <input type="text" name="mob" class="form-control" placeholder="Enter your mobile number" id="mobile">
+        </div>       
+        <div class="mb-3">
+            <label for="moblie" class="form-label">Book number</label>
+            <input type="text" name="booknum" class="form-control" placeholder="Enter Book number" id="mobile">
+        </div> 
+        <button type="submit" name="button2" class="btn btn-dark">Issue</button>
+    </form>
+</div>
+
+{% endblock  %}

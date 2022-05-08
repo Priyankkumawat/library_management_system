@@ -1,0 +1,57 @@
+{% extends 'stud/base.html' %}
+{% block title %}Library{% endblock  %}
+{% block css %}
+.main{
+  height: 365px;
+  background-size: 1100px 600px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+}
+.main a{
+  border-radius:10px;
+  
+}
+{% endblock  %}
+{% block body  %}
+    {% load static %}
+    <div class="container-fluid main" style="background-image: url('{% static "stud/lib-1.jpg"%}');">
+        <div class="row" >
+            <div class="col-6 col-lg-3">
+                <div class="d-grid gap-2 col-6 mx-auto my-3">
+                    <a href="/admin" class="btn btn-dark btn-main">Administrator</a>
+                    <a href="/issue" class="btn btn-dark btn-main my-3">Issue</a>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Return
+                      </button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Select book number to return</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="POST" >
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="enroll" class="form-label">Book number</label>
+              <input type="text" name="ret" class="form-control" placeholder="enter book no please" id="enroll">
+          </div>
+          <div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+          </div>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <a href="" class="btn btn-outline-dark">Return</a>
+      </div> -->
+    </div>
+  </div>
+
+{% endblock  %}
