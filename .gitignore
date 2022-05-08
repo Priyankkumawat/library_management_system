@@ -1,1 +1,2 @@
-li/*.py[settings]
+;;files to ignore
+settings.py
