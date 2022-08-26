@@ -15,31 +15,59 @@
     .mb-3 input :hover{
         background-color: #EDF0F0;
     }
+    .main{
+      height:490px;
+      background-size:100%;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-attachment: fixed;
+    }
 {% endblock  %}
 
 {% block body %}
 {% load static %}
-<div class="container my-5 px-5">
+<div class="container-fluid px-5 main" style="background-image: url('{% static "stud/lib-1.jpg"%}');">
     <form action="" method="post">
         {% csrf_token %}
         <div class="mb-3">
-            <label for="name_stud" class="form-label">Name</label>
+            <label for="name_stud" class="form-label" style="color:cyan">Name</label>
             <input type="text" name="name" class="form-control" placeholder="Enter your name please" id="name_stud">
         </div>
         <div class="mb-3">
-            <label for="enroll" class="form-label">Enrollment number</label>
+            <label for="enroll" class="form-label" style="color:cyan">Enrollment number</label>
             <input type="text" name="enrol" class="form-control" placeholder="Enter your Enrollment please" id="enroll">
         </div>
         <div class="mb-3">
-            <label for="moblie" class="form-label">Mobile number</label>
+            <label for="moblie" class="form-label" style="color:cyan">Mobile number</label>
             <input type="text" name="mob" class="form-control" placeholder="Enter your mobile number" id="mobile">
         </div>       
         <div class="mb-3">
-            <label for="moblie" class="form-label">Book number</label>
+            <label for="moblie" class="form-label" style="color:cyan">Book number</label>
             <input type="text" name="booknum" class="form-control" placeholder="Enter Book number" id="mobile">
-        </div> 
-        <button type="submit" name="button2" class="btn btn-dark">Issue</button>
+        </div>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Issue
+        </button> 
+        
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {% if notavail == "1"%}
+                <div>Not available</div>     
+                {% elif match == "0"%}         
+                Not match
+                {% else %}
+                <div>Confirm ?</div>
+                <button type="submit" class="btn btn-dark">Yes</button>
+                {% endif%}
+            </div>
+          </div>
+        </div>
     </form>
 </div>
-
 {% endblock  %}
